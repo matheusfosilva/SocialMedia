@@ -1,6 +1,8 @@
-package com.portfolioapi.PortfolioApi.model;
+package com.portfolioapi.PortfolioApi.model.user;
 
-import com.portfolioapi.PortfolioApi.dto.RegisterUserRequest;
+import com.portfolioapi.PortfolioApi.dto.users.RegisterUserRequest;
+import com.portfolioapi.PortfolioApi.dto.users.UpdateUserRequest;
+import com.portfolioapi.PortfolioApi.model.BaseModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,5 +41,12 @@ public class User extends BaseModel {
 
     public String getFullName() {
         return StringUtils.capitalize(this.name + " " + this.lastname);
+    }
+
+    public void updateUser (UpdateUserRequest updateUserRequest){
+        this.name = updateUserRequest.getName();
+        this.lastname = updateUserRequest.getLastname();
+        this.bornDate = updateUserRequest.getBornDate();
+        this.phone = updateUserRequest.getPhone();
     }
 }

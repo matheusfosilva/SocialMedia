@@ -1,6 +1,6 @@
-package com.portfolioapi.PortfolioApi.dto;
+package com.portfolioapi.PortfolioApi.dto.users;
 
-import com.portfolioapi.PortfolioApi.model.User;
+import com.portfolioapi.PortfolioApi.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

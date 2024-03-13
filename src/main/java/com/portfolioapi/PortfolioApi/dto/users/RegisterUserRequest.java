@@ -1,4 +1,4 @@
-package com.portfolioapi.PortfolioApi.dto;
+package com.portfolioapi.PortfolioApi.dto.users;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

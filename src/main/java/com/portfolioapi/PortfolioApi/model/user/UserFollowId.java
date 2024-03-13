@@ -1,4 +1,6 @@
-package com.portfolioapi.PortfolioApi.model;
+package com.portfolioapi.PortfolioApi.model.user;
+
+import com.portfolioapi.PortfolioApi.model.user.User;
 
 import java.io.Serializable;
 
