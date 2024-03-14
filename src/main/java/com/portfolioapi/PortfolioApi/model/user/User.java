@@ -3,6 +3,7 @@ package com.portfolioapi.PortfolioApi.model.user;
 import com.portfolioapi.PortfolioApi.dto.users.RegisterUserRequest;
 import com.portfolioapi.PortfolioApi.dto.users.UpdateUserRequest;
 import com.portfolioapi.PortfolioApi.model.BaseModel;
+import com.portfolioapi.PortfolioApi.model.SoftDelete;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User extends BaseModel {
+public class User extends SoftDelete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
