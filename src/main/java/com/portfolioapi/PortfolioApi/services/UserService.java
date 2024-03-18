@@ -13,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -50,10 +52,7 @@ public class UserService {
     }
 
     public void deleteUser(Integer userId) {
-        User user = userDataService.getById(userId);
-
-
-
+        userDataService.deleteUser(userId);
     }
 
 
