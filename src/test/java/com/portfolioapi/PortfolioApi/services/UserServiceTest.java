@@ -55,11 +55,14 @@ public class UserServiceTest {
         assertThat(testingUser.getUpdatedAt().toLocalDate()).isEqualTo(LocalDate.now());
         assertThat(testingUser.getDeletedAt()).isNull();
 
-        assertThat(userRepository.findAllByDeletedAtIsNull()).hasSize(1);
+        assertThat(userRepository.findAll()).hasSize(1);
 
         userService.deleteUser(testingUser.getId());
 
-        assertThat(userRepository.findAllByDeletedAtIsNull()).isEmpty();
+        assertThat(userRepository.findAll()).isEmpty();
+
+
+
     }
 
 }

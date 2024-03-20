@@ -1,7 +1,6 @@
 package com.portfolioapi.PortfolioApi.model;
 
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PreRemove;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

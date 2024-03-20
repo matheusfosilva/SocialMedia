@@ -17,11 +17,11 @@ public class UserDataService extends AbstractDataService<User, Integer, UserRepo
 
     private final UserRepository userRepository;
 
-    public List<User> findAllUsers() {
+    public List<User> findAllActiveUsers() {
         return userRepository.findAllByDeletedAtIsNull();
     }
 
-    public void deleteUser(Integer userId) {
+    public void deleteUserById(Integer userId) {
         User user = getById(userId);
         user.setDeletedAt(LocalDateTime.now());
         userRepository.save(user);
