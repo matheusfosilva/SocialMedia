@@ -1,10 +1,14 @@
 package com.portfolioapi.PortfolioApi.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.portfolioapi.PortfolioApi.dto.users.RegisterUserRequest;
 import com.portfolioapi.PortfolioApi.dto.users.RegisterUserResponse;
 import com.portfolioapi.PortfolioApi.dto.users.UpdateUserRequest;
 import com.portfolioapi.PortfolioApi.dto.users.UserDto;
+import com.portfolioapi.PortfolioApi.dto.users.UserFollowDTO;
+import com.portfolioapi.PortfolioApi.messaging.NotifyRequestProducer;
 import com.portfolioapi.PortfolioApi.model.user.User;
+import com.portfolioapi.PortfolioApi.model.user.UserFollow;
 import com.portfolioapi.PortfolioApi.repositories.UserRepository;
 import com.portfolioapi.PortfolioApi.services.data.UserDataService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserDataService userDataService;
+    private final NotifyRequestProducer notifyRequestProducer;
 
     public RegisterUserResponse registerUser(RegisterUserRequest request) {
         User user = new User(request);
@@ -47,6 +52,14 @@ public class UserService {
 
     public void deleteUser(Integer userId) {
         userDataService.deleteUserById(userId);
+    }
+
+    public String followUser(UserFollowDTO userFollowDTO) {
+        try {
+            return notifyRequestProducer.sendMessage(userFollowDTO);
+        } catch (JsonProcessingException e) {
+            return "notification wasn't sent";
+        }
     }
 
 }

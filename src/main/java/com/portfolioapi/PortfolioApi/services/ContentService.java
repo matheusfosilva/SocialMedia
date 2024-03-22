@@ -13,8 +13,8 @@ import com.portfolioapi.PortfolioApi.services.data.UserDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,27 +37,22 @@ public class ContentService {
 
         Post savedPost = contentRepository.save(post);
 
-        //TODO use menssage here
         registerFilesForPost(request.getFiles(), savedPost);
 
     }
 
-
     public void registerFilesForPost(List<String> files, Post post) {
 
-        List<PostFile> postFiles = new ArrayList<>();
-
-        files.stream().map(filename ->
+        List<PostFile> postFiles = files.stream().map(filename ->
                 new PostFile() {{
                     setFilename(filename);
                     setPost(post);
                 }}
-        ).forEach(postFiles::add);
+        ).collect(Collectors.toList());
 
         postFileRepository.saveAll(postFiles);
 
     }
-
 
     public void getContent(Integer contentId) {
         Content content = contentDataService.getById(contentId);

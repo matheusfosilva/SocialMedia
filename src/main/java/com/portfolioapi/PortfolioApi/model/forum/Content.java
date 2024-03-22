@@ -19,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@MappedSuperclass
+@Entity
 public abstract class Content extends SoftDelete {
 
     @Id
